@@ -17,14 +17,15 @@ import React, { Component } from 'react'
     - unmount = 화면에서 사라짐(제거됨)
     */
 
-
+// 클래스형 컴포넌트를 이용해 생명주기(lifecycle)를 학습하기 위한 예제
 class LifecycleText extends Component {
+    // 컴포넌트가 처음 만들어질 때 실행됨
     constructor(props){
         super(props);
 
         //js에서는 class에 필드영역이 없기때문에
         //저장하고싶은 데이터를 state라는 객체에 key-value형태로 저장한다.
-        this.state = {count: 0}; //초기값
+        this.state = {count: 0}; //초기값 설정
         console.log("constructor : 컴포넌트 생성자 호출");
     }
 
@@ -32,6 +33,8 @@ class LifecycleText extends Component {
     componentDidMount(){
         console.log('componentDidMount : 컴포넌트가 마운트 되었습니다.')
     }
+    // 컴포넌트가 처음으로 화면에 렌더링된 직후 실행
+    // 보통 여기서 API 호출이나 타이머 설정 등을 함
 
     //컴포넌트가 업데이트된 후 호출
     componentDidUpdate(prevProps, prevState){
@@ -39,11 +42,21 @@ class LifecycleText extends Component {
         console.log("이전 state : ", prevState);
         console.log("이전 props : ", prevProps);
     }
+    // state나 props가 변경돼서 리렌더링이 끝난 후 실행 //리렌더링 : 리액트가 변경된 부분만 다시 그리는 것
+    // React가 render → DOM 업데이트 → componentDidUpdate 순서로 실행
+    // 변경 전의 상태/속성을 확인할 수 있음
+
+    // prevProps, prevState는 React가 컴포넌트를 업데이트한 "후에" 자동으로 전달해주는 값.
+    // 즉, 우리가 따로 저장해두는 게 아니라, React 내부에서 알아서:
+    // 상태가 바뀌기 전의 값
+    // props가 바뀌기 전의 값
+    // 을 매개변수로 전달해주는 구조.
 
     // 컴포넌트가 언마운트 될 때 호출
     componentWillUnmount() {
         console.log("componentWillUnmount : 컴포넌트가 언마운트 됩니다.");
     }
+    // 보통 타이머 해제, 이벤트 제거, 리소스 정리 등에 사용
 
     increment = () => {
         this.setState({ count: this.state.count + 1 });// 변경방법
