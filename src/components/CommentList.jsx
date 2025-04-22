@@ -15,7 +15,7 @@ const serverComments = [
     message: '냉면먹고 싶습니다.',
   },
 ];
-
+// Comment 컴포넌트를 활용해 3초마다 댓글 하나씩 추가해서 보여주는 기능
 class CommentList extends Component {
   constructor(props) {
     super(props);

@@ -12,7 +12,7 @@ const Container = styled.div`
 const CommentText = styled.span`
     font-size: 18px;
 `
-
+//props로부터 데이터를 받아 댓글을 렌더링하는 컴포넌트
 class Comment extends Component {
     constructor(props){
         super(props)
