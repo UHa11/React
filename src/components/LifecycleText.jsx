@@ -11,7 +11,12 @@ import React, { Component } from 'react'
     react의 component 라이프사이클은 생성(mount), 수정(update), 제거(unmount) 단계로 나누어
     각 단계마다 componentDidMount, componentDidUpdate, componentWillUnmount같은 메서드를 실행하여
     DOM을 조적하거나 리소스를 정리할 수 있는 기능을 말함.
-*/
+    
+    - mount(마운트)는 컴포넌트가 처음으로 화면(DOM)에 나타나는 것
+    - update = state나 props가 바뀌어 다시 렌더링됨
+    - unmount = 화면에서 사라짐(제거됨)
+    */
+
 
 class LifecycleText extends Component {
     constructor(props){
@@ -19,14 +24,11 @@ class LifecycleText extends Component {
 
         //js에서는 class에 필드영역이 없기때문에
         //저장하고싶은 데이터를 state라는 객체에 key-value형태로 저장한다.
-        this.state = {
-            count: 0,
-        }
-
+        this.state = {count: 0}; //초기값
         console.log("constructor : 컴포넌트 생성자 호출");
     }
 
-    // 컴포넌트가 마운트되었을 때 호출(처음 렌더링될 때)
+    // 컴포넌트가 마운트되었을 때 호출(처음 렌더링될 때) 
     componentDidMount(){
         console.log('componentDidMount : 컴포넌트가 마운트 되었습니다.')
     }
@@ -44,15 +46,22 @@ class LifecycleText extends Component {
     }
 
     increment = () => {
-        this.setState({
-            count: this.state.count + 1
-        })
+        this.setState({ count: this.state.count + 1 });// 변경방법
     }
 
+    /*
+    render()
+    - eact 컴포넌트의 UI(화면 구조)를 반환하는 메서드
+    - HTML처럼 보이는 JSX 문법을 반환함
+    - 클래스형 컴포넌트에서는 render()가 필수로 있어야 함
+    - state나 props가 변경되면 render()는 자동으로 다시 실행됨
+
+    this. -> 현재 클래스 인스턴스
+    */
     render() {
         return (
             <div>
-                <p>Count : {this.state.count}</p>
+                <p>Count : {this.state.count}</p> {/*  현재 컴포넌트의 상태*/}
                 <button onClick={this.increment}> 1증가 </button>
             </div>
         )
