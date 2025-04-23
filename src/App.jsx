@@ -1,11 +1,13 @@
 import './App.css'
-import UseStateTest from './components/useState/UseStateTest'
+import LandingPage from './components/useState/LendingPage'
+// import UseStateTest from './components/useState/UseStateTest'
 
 function App() {
 
   return (
     <>
     {/* <UseStateTest/> */}
+    <LandingPage />
     </>
   )
 }
