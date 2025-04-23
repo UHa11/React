@@ -22,6 +22,9 @@ import React, { useState } from 'react'
 //     }
 // }
 
+
+// useState를 통해 숫자 상태(count)를 증가/감소시키고,
+// "상태 업데이트가 비동기적으로 처리됨"과 이전 상태에 의존하는 업데이트는 콜백 방식으로 처리해야 한다"는 개념
 const UseStateTest = () => {
     //const num = 0;
     const [num, setNum] = useState(0);
@@ -30,7 +33,8 @@ const UseStateTest = () => {
         //num += 1; 현재 상태를 직접 상용해서 변경 -> state변경x -> 리렌더링x
         setNum(num + 1);
         setNum(num + 1);
-        //결과적으로 num + 1이 됨 -> 실시간으로 처리되는 것이 아니라 모아두었다가 한번에 처리하는 방식
+        //결과적으로 num + 1이 됨
+        // React는 성능을 위해 상태 업데이트를  실시간으로 즉시 처리하지 않고, 모아서 한꺼번에 처리(batch update)
     }
 
     const onClickMinus = () => {
