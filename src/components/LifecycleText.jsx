@@ -15,6 +15,8 @@ import React, { Component } from 'react'
     - mount(마운트)는 컴포넌트가 처음으로 화면(DOM)에 나타나는 것
     - update = state나 props가 바뀌어 다시 렌더링됨
     - unmount = 화면에서 사라짐(제거됨)
+
+    props : 데이터
     */
 
 // 클래스형 컴포넌트를 이용해 생명주기(lifecycle)를 학습하기 위한 예제
@@ -29,7 +31,7 @@ class LifecycleText extends Component {
         console.log("constructor : 컴포넌트 생성자 호출");
     }
 
-    // 컴포넌트가 마운트되었을 때 호출(처음 렌더링될 때) 
+    // 컴포넌트가 마운트되었을 때 호출(처음 렌더링될 때) // 처음 실행할때 한번만 실행
     componentDidMount(){
         console.log('componentDidMount : 컴포넌트가 마운트 되었습니다.')
     }
