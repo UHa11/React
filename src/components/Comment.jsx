@@ -22,13 +22,13 @@ class Comment extends Component {
         this.state = {}//초기값 설정
     }
 
-    // componentDidMount(){//렌더링한후
-    //     console.log(`${this.props.id}의 componentDidMount`)
-    // }
-
-    componentDidUpdate(){//리렌더링 한후
-        console.log(`${this.props.id}의 componentDidUpdate`)
+    componentDidMount(){//렌더링한후
+        console.log(`${this.props.id}의 componentDidMount`)
     }
+
+    // componentDidUpdate(){//리렌더링 한후
+    //     console.log(`${this.props.id}의 componentDidUpdate`)
+    // }
 
     // componentWillUnmount(){//언마운트 한후
     //     console.log(`${this.props.id}의 componentWillUnmount`)
