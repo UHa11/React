@@ -5,7 +5,8 @@ const UseRefTest = () => {
   const [gender, setGender] = useState("man");
 
   const useInput = useRef(null);
-
+    //useRef()는 React에서 DOM 요소나 값을 저장해두는 데 사용하는 Hook이야.
+    // 상태처럼 값이 바뀌어도 리렌더링이 일어나지 않는 저장 공간
   const handleChangeName = (ev) => {
     setName(ev.target.value);
   }

@@ -1,5 +1,6 @@
 import './App.css'
-import SignUp from './components/useState/SignUp'
+import UseRefTest from './components/useRef/UseRefTest'
+// import SignUp from './components/useState/SignUp'
 // import LandingPage from './components/useState/LendingPage'
 // import UseStateTest from './components/useState/UseStateTest'
 
@@ -9,7 +10,8 @@ function App() {
     <>
     {/* <UseStateTest/> */}
     {/* <LandingPage /> */}
-    <SignUp/>
+    {/* <SignUp/> */}
+    <UseRefTest/>
     </>
   )
 }
