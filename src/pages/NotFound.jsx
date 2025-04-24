@@ -6,7 +6,7 @@ const NotFound = () => {
   return (
     <div>
         <h2>페이지를 찾을 수 없습니다.(404)</h2>
-        <button onClick={()=> navigate("/")}홈으로 가기></button>
+        <button onClick={()=> navigate("/")}홈으로></button>
     </div>
   )
 }
