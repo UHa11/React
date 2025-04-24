@@ -6,7 +6,6 @@ const UserList = ({ pData }) => {
     }
     return (
         <form onSubmit={}>
-
             {pData.map((data) =>
                 <ul key={data.id} onClick={idClick}>
                     <li>이름: {data.name}</li>
