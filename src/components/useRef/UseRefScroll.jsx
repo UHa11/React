@@ -26,6 +26,16 @@ const UseRefScroll = () => {
 
     const handleScrollView = (sectionKey) => {
         scrollRef.current[sectionKey]?.scrollIntoView({behavior: "smooth"});
+        //.current -> useRef()로 만든 ref 객체가 실제로 참조하고 있는 "값"이나 "DOM 요소"를 담는 속성
+        //scrollRef -> ref객체 -> scrollRef객체의 DOM요소에 접근
+
+        //?. 기호는 자바스크립트에서 옵셔널 체이닝(optional chaining) 
+        // -> 어떤 객체의 프로퍼티나 메서드가 존재하지 않아도, 에러 없이 안전하게 접근할 수 있게 해주는 문법
+
+        //scrollRef.current[sectionKey]에서 sectionKey가 "main"이면 scrollRef.current.main
+
+        //scrollIntoView()는 DOM의 기본 메서드로 해당 요소가 화면 안으로 스크롤되도록 이동시켜 줘.
+        //behavior: "smooth" 옵션을 주면 → 부드럽게 스크롤
     }
 
     return (
@@ -40,6 +50,10 @@ const UseRefScroll = () => {
 
             <div>
                 <section ref={(el) => scrollRef.current.main = el} style={{paddingTop: "80px"}}>
+                    {/* 이 부분은 React가 <section>을 렌더링할 때,
+                    그 실제 DOM 요소를 el에 담아서 이 함수를 실행.
+                    el = 이 <section> DOM 요소 그 자체
+                    그리고 이걸 scrollRef.current.main에 저장하고 있는 거. */}
                     <h1>메인페이지</h1>
                     <p>
                         1) 컴플라이언스 리스크 관리 체계

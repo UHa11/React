@@ -17,7 +17,7 @@ const UseRefTest = () => {
 
   const handleSubmit = (ev) => {
     alert(`이름 : ${name}, 성별 : ${gender}`);
-    ev.preventDefault(); // a태그나 submit태그같은 고유동작을 중당하기위한 이벤트 방지
+    ev.preventDefault(); // a태그나 submit태그같은 고유동작을 중단하기위한 이벤트 방지
   }
 
   const handleReset = () => {
