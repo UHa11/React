@@ -1,7 +1,8 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
 
 const Profile = () => {
-    const userName = useParams();
+    const {userName} = useParams();
   return (
     <div>
         <h2>{userName}의 프로필페이지 입니다.</h2>
