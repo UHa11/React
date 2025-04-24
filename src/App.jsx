@@ -5,6 +5,7 @@ import './App.css'
 // import SignUp from './components/useState/SignUp'
 // import LandingPage from './components/useState/LendingPage'
 // import UseStateTest from './components/useState/UseStateTest'
+import UseMenoTest from './components/useMemo/UseMemoTest'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
     {/* <SignUp/> */}
     {/* <UseRefTest/> */}
     {/* <UseRefScroll /> */}
+    <UseMenoTest/>
     </>
   )
 }
