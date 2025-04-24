@@ -1,11 +1,29 @@
+import React from 'react'
+import {BrowserRouter,Routes,Route, Link} from 'react-router-dom'
 import './App.css'
-import UseRefScroll from './UseRef/UseRefScroll'
+import About from './pages/About'
+import NotFound from './pages/NotFound'
+import Profile from './pages/Profile'
+import Home from './pages/Home'
 
 function App() {
 
   return (
     <>
-    <UseRefScroll/>
+      <BrowserRouter>
+      <nav style={{marginBottom: 20}}>
+        {/* Link:a태그와 동일한 역할을 하지만 react-router-dom을 활용해 spa방식으로 자연스럽게 화면 전환 */}
+        <Link to="/" style={{marginRight: 12}}>홈</Link> 
+        <Link to="/about"style={{marginRight: 12}}>소개</Link> 
+        <Link to="/profile/김유하">프로필</Link> 
+      </nav>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/profile/:userName' element={<Profile/>}/>
+        <Route path='/*' element={<NotFound/>}/>
+      </Routes>
+      </BrowserRouter>
     </>
   )
 }
