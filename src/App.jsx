@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
-import EffectView from './components/useEffect/EffectView'
+import ToggleBox from './components/customHook/ToggleBox'
+// import EffectView from './components/useEffect/EffectView'
 // import UseRefScroll from './components/useRef/UseRefScroll'
 // import UseRefTest from './components/useRef/UseRefTest'
 // import SignUp from './components/useState/SignUp'
@@ -18,7 +19,8 @@ function App() {
     {/* <UseRefTest/> */}
     {/* <UseRefScroll /> */}
     {/* <UseMenoTest/> */}
-    <EffectView/>
+    {/* <EffectView/> */}
+    <ToggleBox/>
     </>
   )
 }
