@@ -11,23 +11,23 @@ const UserDetail = () => {
 
   const onChangeIsOnline = (ev) => {
     const isOnlineBoolean = ev.target.value === 'online'; // online이면 true
-    setUserList(list =>
-      list.map(user =>
-        user.id === id
-          ? { ...user, isOnline: isOnlineBoolean } 
-          : user
+    setUserList(userList =>
+      userList.map(userProfile =>
+        userProfile.id === id
+          ? { ...userProfile, isOnline: isOnlineBoolean } 
+          : userProfile
       )
     );
-  }
+  };
 
   const onDeleteUser = () => {
     setUserList(userList.filter(userProfile => userProfile.id !== id));
     navigate("/");
-  }
+  };
   
   if (!user) {
     return <div>해당 유저를 찾을 수 없습니다.</div>;
-  }
+  };
   return (
     <div>UserDetail
       <ul>
@@ -35,7 +35,7 @@ const UserDetail = () => {
         <li>이름: {user.name}</li>
         <li>나이: {user.age}</li>
         <li>온라인 상태:</li>
-        <select checked={user.isOnline === false ? `offline`:'online'} onChange={onChangeIsOnline}>
+        <select value={user.isOnline === false ? `offline`:'online'} onChange={onChangeIsOnline}>
           <option value="online">온라인</option>
           <option value="offline">오프라인</option>
         </select>
