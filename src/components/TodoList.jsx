@@ -85,6 +85,10 @@ const TodoList = () => {
 
     const onDelete = (id) => {
         setTodos(todos.filter(todo => todo.id !== id));
+        // filter()는 배열의 요소 중에서 조건을 만족하는 요소만 남기고 새 배열을 반환합니다.
+        //filter()는 리액트 상태 배열에서 요소 삭제에 가장 많이 쓰이는 함수입니다.
+        // 기존 배열을 직접 변경하지 않고 새 배열을 만들어 반환하기 때문에
+        // 불변성 유지 + 리렌더링 트리거에 아주 적합합니다.
     }
 
     return (
