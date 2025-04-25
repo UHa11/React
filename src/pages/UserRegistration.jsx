@@ -9,6 +9,12 @@ const UserRegistration = () => {
   const [idInput, setIdInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [ageInput, setAgeInput] = useState(0);
+  
+  //const [Input, setInput] = userState({
+  //  id : '',
+  //  name : '',
+  //  age : 0, 
+  //});
 
   const addUserProfile = () => {
     if (idInput.trim() === '') return;
