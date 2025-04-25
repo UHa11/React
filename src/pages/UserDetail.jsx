@@ -1,11 +1,30 @@
 import React from 'react'
 import { useUser } from './UserContext';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const UserDetail = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
-  const { userList } = useUser();
+  
+  const { userList, setUserList } = useUser();
   const user = userList.find(userProfile => userProfile.id === id);
+
+  const onChangeIsOnline = (ev) => {
+    const isOnlineBoolean = ev.target.value === 'online'; // online이면 true
+    setUserList(list =>
+      list.map(user =>
+        user.id === id
+          ? { ...user, isOnline: isOnlineBoolean } 
+          : user
+      )
+    );
+  }
+
+  const onDeleteUser = () => {
+    setUserList(userList.filter(userProfile => userProfile.id !== id));
+    navigate("/");
+  }
+  
   if (!user) {
     return <div>해당 유저를 찾을 수 없습니다.</div>;
   }
@@ -15,9 +34,12 @@ const UserDetail = () => {
         <li>아이디: {user.id}</li>
         <li>이름: {user.name}</li>
         <li>나이: {user.age}</li>
-        <li>온라인 상태: {user.isOnline}</li>
-        <button>수정</button>
-        <button>삭제</button>
+        <li>온라인 상태:</li>
+        <select checked={user.isOnline === false ? `offline`:'online'} onChange={onChangeIsOnline}>
+          <option value="online">온라인</option>
+          <option value="offline">오프라인</option>
+        </select>
+        <button onClick={onDeleteUser}>삭제</button>
       </ul>
 
 
