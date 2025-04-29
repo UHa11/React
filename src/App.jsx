@@ -8,7 +8,9 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<HomePage />} />
+        {/* 메인화면 */}
         <Route path="/posts" element={<PostListPage />} />
+        {/* 게시글목록 페이지 */}
       </Routes>
     </Router>
   )
