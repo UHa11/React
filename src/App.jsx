@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import './App.css'
 import CounterDisplay from './Components/CounterDisplay'
+import CounterContreols from './Components/CounterContreols'
 const AppContainer = styled.div`
   
 `
@@ -14,6 +15,7 @@ function App() {
       <Section>
         <h2>zustand 전역 상태 관리</h2>
         <CounterDisplay />
+        <CounterContreols/>
       </Section>
     </AppContainer>
   )
