@@ -10,16 +10,19 @@ const Title = styled.h1`
 
 const Button = styled(Link)`
     display: inline-block;
-    background-color: #63b6ff;
+    background: #6c6cff;
     color: white;
     padding: 12px 24px;
+    border-radius: 4px;
     text-decoration: none;
     margin: 12px;
 
     &:hover{
         opacity: 0.9;
+        color: white;
     }
 `
+
 const HomePage = () => {
   return (
     <Container>
@@ -28,7 +31,6 @@ const HomePage = () => {
         <Button to="/posts/new">게시글 작성</Button>
     </Container>
   )
-
 }
 
 export default HomePage
