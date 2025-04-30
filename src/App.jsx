@@ -1,11 +1,22 @@
+import { ThemeProvider } from 'styled-components'
 import './App.css'
-import IconButtons from './components/IconButtons'
+import GlobalStyle from './GlobalStyle'
+import { useState } from 'react'
+import { darkTheme, lightTheme } from './themes';
+import ThemeBox from './components/ThemeBox';
+// import IconButtons from './components/IconButtons'
 
 function App() {
+  const [isDark, setIsDark] = useState(false);
+  const toggleTheme = () => setIsDark(!isDark);
 
   return (
     <>
-    <IconButtons/>
+    {/* <IconButtons/> */}
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <GlobalStyle />
+      <ThemeBox onToggleTheme={toggleTheme}/>
+    </ThemeProvider>
     </>
   )
 }
