@@ -1,21 +1,4 @@
 {
-  "boards": [
-    {
-      "id": "admin",
-      "title": "첫 번째 글",
-      "body": "내용입니다."
-    },
-    {
-      "id": "admin",
-      "title": "두 번째 글",
-      "body": "내용입니다."
-    },
-    {
-      "id": "Uha",
-      "title": "유하 글",
-      "body": "내용입니다."
-    }
-  ],
   "users": [
     {
       "id": "admin",
@@ -24,6 +7,26 @@
     {
       "id": "Uha",
       "name": "김유하"
+    }
+  ],
+  "boards": [
+    {
+      "id": "admin",
+      "name": "관리자",
+      "title": "첫 번째 글",
+      "body": "내용입니다."
+    },
+    {
+      "id": "admin",
+      "name": "관리자",
+      "title": "두 번째 글",
+      "body": "내용입니다."
+    },
+    {
+      "id": "Uha",
+      "name": "김유하",
+      "title": "유하 글",
+      "body": "내용입니다."
     }
   ]
 }

@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 const BoardList = () => {
   const [boards, setBoards] = useState([]);
 
   const getBoards = async () => {
-    const res = await axios.get('http://localhost:3001/users');
+    const res = await axios.get('http://localhost:3001/boards');
     setBoards(res.data);
   };
 
@@ -13,18 +14,27 @@ const BoardList = () => {
     getBoards();
   });
 
+  const onBoardDetail = () => {};
   return (
-    <div>
-      <h2>게시판</h2>
-      <ul>
-        {boards.map((board, index) => (
-          <li key={board.id}>
-            {index + 1}.(제목: {board.title}) (작성자:{board.name})
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Ul>
+      {boards.map((board, index) => (
+        <Li key={index + 1} onClick={onBoardDetail}>
+          <div>{index + 1}</div>|<div>제목: {board.title}</div>|<div>작성자:{board.name}</div>
+        </Li>
+      ))}
+    </Ul>
   );
 };
 
 export default BoardList;
+
+const Ul = styled.ul`
+  list-style: none;
+  text-align: left;
+`;
+
+const Li = styled.li`
+  display: grid;
+  grid-template-columns: 0.2fr repeat(2, 0.1fr 1fr);
+  gap: 10px;
+`;
