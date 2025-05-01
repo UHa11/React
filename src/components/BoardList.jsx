@@ -17,7 +17,7 @@ const BoardList = () => {
   });
 
   const onBoardDetail = (userId) => {
-    navigate(`/user/${userId}`);
+    navigate(`/detail/${userId}`);
   };
   return (
     <Ul>
