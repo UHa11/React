@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const BoardList = () => {
   const [boards, setBoards] = useState([]);
+  const navigate = useNavigate();
 
   const getBoards = async () => {
     const res = await axios.get('http://localhost:3001/boards');
@@ -14,11 +16,13 @@ const BoardList = () => {
     getBoards();
   });
 
-  const onBoardDetail = () => {};
+  const onBoardDetail = (userId) => {
+    navigate(`/user/${userId}`);
+  };
   return (
     <Ul>
       {boards.map((board, index) => (
-        <Li key={index + 1} onClick={onBoardDetail}>
+        <Li key={index + 1} onClick={() => onBoardDetail(board.id)}>
           <div>{index + 1}</div>|<div>제목: {board.title}</div>|<div>작성자:{board.name}</div>
         </Li>
       ))}
