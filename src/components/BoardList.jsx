@@ -16,13 +16,13 @@ const BoardList = () => {
     getBoards();
   });
 
-  const onBoardDetail = (userId) => {
-    navigate(`/detail/${userId}`);
+  const onBoardDetail = (board) => {
+    navigate(`/detail/${board}`);
   };
   return (
     <Ul>
       {boards.map((board, index) => (
-        <Li key={index + 1} onClick={() => onBoardDetail(board.id)}>
+        <Li key={index + 1} onClick={() => onBoardDetail(board)}>
           <div>{index + 1}</div>|<div>제목: {board.title}</div>|<div>작성자:{board.name}</div>
         </Li>
       ))}

@@ -4,6 +4,8 @@ import HomeForm from './pages/HomeForm';
 import LoginForm from './pages/LoginForm';
 import NotFound from './pages/NotFound';
 import BoardDetail from './components/BoardDetail';
+import SignUpView from './components/SignUpView';
+import SearchIdPwdView from './components/SearchIdPwdView';
 
 function App() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -23,7 +25,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeForm />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/detail/:id" element={<BoardDetail />} />
+          <Route path="/signUp" element={<SignUpView />} />
+          <Route path="/searchIdPwd" element={<SearchIdPwdView />} />
+          <Route path="/detail/:board" element={<BoardDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
