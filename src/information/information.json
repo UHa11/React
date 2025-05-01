@@ -1,0 +1,29 @@
+{
+  "boards": [
+    {
+      "id": "admin",
+      "title": "첫 번째 글",
+      "body": "내용입니다."
+    },
+    {
+      "id": "admin",
+      "title": "두 번째 글",
+      "body": "내용입니다."
+    },
+    {
+      "id": "Uha",
+      "title": "유하 글",
+      "body": "내용입니다."
+    }
+  ],
+  "users": [
+    {
+      "id": "admin",
+      "name": "관리자"
+    },
+    {
+      "id": "Uha",
+      "name": "김유하"
+    }
+  ]
+}
