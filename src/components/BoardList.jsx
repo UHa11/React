@@ -15,7 +15,7 @@ const BoardList = () => {
 
   return (
     <div>
-      <h2>할일 목록</h2>
+      <h2>게시판</h2>
       <ul>
         {boards.map((board, index) => (
           <li key={board.id}>
