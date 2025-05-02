@@ -1,14 +1,13 @@
 import React from 'react';
 import BoardList from '../components/BoardList';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
 
 const HomeForm = () => {
-  const { id } = useParams();
+  const loginUser = JSON.parse(localStorage.getItem('loginUser'));
   return (
     <div>
       <h2>게시판</h2>
-      {id && (
+      {loginUser && (
         <ButtonBox>
           <button>글쓰기</button>
         </ButtonBox>

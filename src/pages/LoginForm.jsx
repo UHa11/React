@@ -36,6 +36,9 @@ const LoginForm = () => {
 
     const foundUser = users.find((user) => user.id === data.id);
     if (foundUser) {
+      localStorage.setItem('loginUser', JSON.stringify({ id: foundUser.id, pwd: foundUser.pwd }));
+      navigate(`/`);
+    } else {
       setError('id', {
         type: 'manual',
         message: '잘못된 아이디 입니다.',
@@ -44,8 +47,6 @@ const LoginForm = () => {
         type: 'manual',
         message: '잘못된 비밀번호 입니다.',
       });
-    } else {
-      navigate(`/`);
     }
   };
 
