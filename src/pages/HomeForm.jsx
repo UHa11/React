@@ -1,9 +1,9 @@
 import React from 'react';
 import BoardList from '../components/BoardList';
 import styled from 'styled-components';
-
+import useUserStore from '../store/useUserStore';
 const HomeForm = () => {
-  const loginUser = JSON.parse(localStorage.getItem('loginUser'));
+  const { loginUser } = useUserStore();
   return (
     <div>
       <h2>게시판</h2>

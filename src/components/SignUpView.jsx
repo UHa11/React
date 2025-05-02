@@ -70,7 +70,7 @@ const SignUpView = () => {
   };
 
   return (
-    <form onSubmit={() => handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <ul>
         <li>아이디</li>
         <input

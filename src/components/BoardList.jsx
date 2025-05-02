@@ -14,7 +14,7 @@ const BoardList = () => {
 
   useEffect(() => {
     getBoards();
-  });
+  }, []);
 
   const onBoardDetail = (board) => {
     navigate(`/detail/${board}`);

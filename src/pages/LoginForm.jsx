@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
+import useUserStore from '../store/useUserStore';
 
 const schema = yup.object().shape({
   id: yup.string().required('아이디를 입력하세요'),
@@ -12,6 +13,7 @@ const schema = yup.object().shape({
 });
 
 const LoginForm = () => {
+  const { setLoginUser } = useUserStore();
   const navigate = useNavigate();
 
   const {
@@ -35,8 +37,8 @@ const LoginForm = () => {
     const users = res.data;
 
     const foundUser = users.find((user) => user.id === data.id);
-    if (foundUser) {
-      localStorage.setItem('loginUser', JSON.stringify({ id: foundUser.id, pwd: foundUser.pwd }));
+    if (foundUser.pwd === data.pwd) {
+      setLoginUser(localStorage.setItem('loginUser', JSON.stringify({ id: foundUser.id, pwd: foundUser.pwd })));
       navigate(`/`);
     } else {
       setError('id', {
@@ -51,7 +53,7 @@ const LoginForm = () => {
   };
 
   return (
-    <LoginContainer onSubmit={() => handleSubmit(onSubmit)}>
+    <LoginContainer onSubmit={handleSubmit(onSubmit)}>
       <h2>로그인</h2>
       <ul>
         <li>아이디</li>
