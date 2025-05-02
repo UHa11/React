@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
-import useUserStore from '../store/useUserStore';
 
 const schema = yup.object().shape({
   id: yup.string().required('아이디를 입력하세요'),
@@ -13,7 +12,6 @@ const schema = yup.object().shape({
 });
 
 const LoginForm = () => {
-  const { setLoginUser } = useUserStore();
   const navigate = useNavigate();
 
   const {
@@ -38,16 +36,13 @@ const LoginForm = () => {
 
     const foundUser = users.find((user) => user.id === data.id);
     if (foundUser.pwd === data.pwd) {
-      setLoginUser(localStorage.setItem('loginUser', JSON.stringify({ id: foundUser.id, pwd: foundUser.pwd })));
+      const user = { id: foundUser.id, pwd: foundUser.pwd };
+      localStorage.setItem('loginUser', JSON.stringify(user));
       navigate(`/`);
     } else {
       setError('id', {
         type: 'manual',
-        message: '잘못된 아이디 입니다.',
-      });
-      setError('pwd', {
-        type: 'manual',
-        message: '잘못된 비밀번호 입니다.',
+        message: '아이디 또는 비번이 잘못되었습니다.',
       });
     }
   };
