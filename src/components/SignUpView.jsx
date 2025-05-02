@@ -21,6 +21,7 @@ const schema = yup.object().shape({
 const SignUpView = () => {
   const navigate = useNavigate();
   const { searchId, setSearchId } = useState(false);
+  const [idInput, setIdInput] = useState('');
   const {
     register,
     handleSubmit,
@@ -33,7 +34,13 @@ const SignUpView = () => {
   const onSubmit = async (data) => {
     if (searchId) {
       try {
-        const { sPwd, ...userData } = data;
+        const userData = {
+          id: data.id,
+          pwd: data.pwd,
+          name: data.name,
+          age: data.age,
+          phone: data.phone,
+        };
         await axios.post('http://localhost:8080/api/users', userData);
         navigate('/login');
       } catch (err) {
@@ -49,7 +56,7 @@ const SignUpView = () => {
     const res = axios.get('http://localhost:3001/users');
     const users = res.data;
 
-    const foundUser = users.some((user) => user.id === data.id);
+    const foundUser = users.some((user) => user.id === idInput);
     //some => "조건에 맞는 게 하나라도 있는지?" 검사
     if (foundUser) {
       setError('id', {
@@ -61,17 +68,22 @@ const SignUpView = () => {
       alert('사용가능한 아이디 입니다.');
     }
   };
-  const onChangeId = () => {
-    setSearchId(false);
-  };
 
   return (
     <form onSubmit={() => handleSubmit(onSubmit)}>
       <ul>
         <li>아이디</li>
-        <input type="text" onChange={() => onChangeId()} {...register('id')} />
+        <input
+          type="text"
+          value={idInput}
+          onChange={(e) => {
+            setIdInput(e.target.value);
+            setSearchId(false);
+          }}
+          {...register('id')}
+        />
         {errors.id && <p>{errors.id.message}</p>}
-        <button onClick={onSearchId}>중복확인</button>
+        <button onClick={onSearchId()}>중복확인</button>
         <li>비밀번호</li>
         <input type="text" {...register('pwd')} />
         {errors.pwd && <p>{errors.pwd.message}</p>}

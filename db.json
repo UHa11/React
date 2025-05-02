@@ -2,11 +2,17 @@
   "users": [
     {
       "id": "admin",
-      "name": "관리자"
+      "pwd": "admin",
+      "name": "관리자",
+      "age": "11112211",
+      "phone": "010-0000-0000"
     },
     {
-      "id": "Uha",
-      "name": "김유하"
+      "id": "dbgk",
+      "pwd": "dbgk",
+      "name": "관리자",
+      "age": "19931108",
+      "phone": "010-1111-1111"
     }
   ],
   "boards": [
