@@ -20,7 +20,7 @@ const LoginForm = () => {
     if (loginUser) {
       navigate('/', { replace: true }); // 로그인되어 있으면 메인으로 보내기
     }
-  }, []);
+  }, [loginUser, navigate]);
 
   const {
     register,
@@ -30,6 +30,8 @@ const LoginForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  if (loginUser) return null; // 로그인 되어있으면 리다이렉트
 
   const onSingUp = () => {
     navigate(`/signUp`);

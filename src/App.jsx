@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     setLoginUser(); // 브라우저 켜질 때마다 상태 복원
-  }, []);
+  }, [setLoginUser]);
 
   return (
     <>
@@ -28,7 +28,7 @@ function App() {
           <Link to="/" style={{ marginRight: 12 }}>
             Home
           </Link>
-          {loginUser === null ? (
+          {!loginUser ? (
             <Link to="/login" style={{ marginRight: 12 }}>
               Login
             </Link>
