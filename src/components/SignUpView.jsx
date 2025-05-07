@@ -51,13 +51,18 @@ const SignUpView = () => {
         });
         return;
       }
-      if (userId.match(/^(?=.*[a-zA-Z])(?=.*\d).{5,}$/)) {
+
+      const pattern = /^(?=.*[a-zA-Z])(?=.*\d).{5,}$/;
+      if (!pattern.test(userId)) {
         setError('id', {
           type: 'manual',
           message: '영문자+숫자 포함 5자 이상 입력해주세요.',
         });
         return;
       }
+      // .match()는 매칭되면 배열, 아니면 null → 조건식에서 헷갈릴 수 있음
+      // 조건 검사 목적이면 .test() 쓰는 게 정확하고 실수 없음
+
       const foundUser = users.some((user) => user.id === userId);
       //some => "조건에 맞는 게 하나라도 있는지?" 검사
       if (foundUser) {

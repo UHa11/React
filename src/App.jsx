@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import HomeForm from './pages/HomeForm';
@@ -9,9 +10,16 @@ import SearchIdPwdView from './components/SearchIdPwdView';
 import useUserStore from './store/useUserStore';
 
 function App() {
-  const { loginUser, logout } = useUserStore();
+  const loginUser = useUserStore((state) => state.loginUser);
+  const setLoginUser = useUserStore((state) => state.setLoginUser);
+  const logout = useUserStore((state) => state.logout);
+
   const apiUrl = import.meta.env.VITE_API_URL;
   console.log(apiUrl);
+
+  useEffect(() => {
+    setLoginUser(); // 브라우저 켜질 때마다 상태 복원
+  }, []);
 
   return (
     <>
@@ -36,7 +44,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signUp" element={<SignUpView />} />
           <Route path="/searchIdPwd" element={<SearchIdPwdView />} />
-          <Route path="/detail/:board" element={<BoardDetail />} />
+          <Route path="/detail/:boardId" element={<BoardDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

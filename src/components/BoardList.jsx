@@ -1,28 +1,24 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import useBoardsStore from '../store/useBoardsStore';
 
 const BoardList = () => {
-  const [boards, setBoards] = useState([]);
+  const { boardList, setBoardList } = useBoardsStore();
   const navigate = useNavigate();
 
-  const getBoards = async () => {
-    const res = await axios.get('http://localhost:3001/boards');
-    setBoards(res.data);
-  };
-
   useEffect(() => {
-    getBoards();
-  }, []);
+    setBoardList(); // 이게 있어야 API 요청이 발생함
+  }, [setBoardList]);
 
-  const onBoardDetail = (board) => {
-    navigate(`/detail/${board}`);
+  const onBoardDetail = (boardId) => {
+    console.log(boardId);
+    navigate(`/detail/${boardId}`);
   };
   return (
     <Ul>
-      {boards.map((board, index) => (
-        <Li key={index + 1} onClick={() => onBoardDetail(board)}>
+      {boardList.map((board, index) => (
+        <Li key={board.boardId} onClick={() => onBoardDetail(board.boardId)}>
           <div>{index + 1}</div>|<div>제목: {board.title}</div>|<div>작성자:{board.name}</div>
         </Li>
       ))}

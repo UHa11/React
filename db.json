@@ -10,7 +10,7 @@
     {
       "id": "dbgk",
       "pwd": "dbgk",
-      "name": "관리자",
+      "name": "김유하",
       "age": "19931108",
       "phone": "010-1111-1111"
     },
@@ -27,23 +27,40 @@
       "name": "안산",
       "age": "99992222",
       "phone": "010-2020-4949"
+    },
+    {
+      "id": "digh",
+      "pwd": "dighdigh1234",
+      "name": "야호",
+      "age": "19900101",
+      "phone": "010-2939-2029"
+    },
+    {
+      "id": "user01",
+      "pwd": "user01",
+      "name": "user",
+      "age": "10931102",
+      "phone": "010-2393-9392"
     }
   ],
   "boards": [
     {
+      "boardId": "128djejb",
       "id": "admin",
       "name": "관리자",
       "title": "첫 번째 글",
       "body": "내용입니다."
     },
     {
+      "boardId": "12wdjejdj3",
       "id": "admin",
       "name": "관리자",
       "title": "두 번째 글",
       "body": "내용입니다."
     },
     {
-      "id": "Uha",
+      "boardId": "1r3weirejb",
+      "id": "dbgk",
       "name": "김유하",
       "title": "유하 글",
       "body": "내용입니다."

@@ -7,7 +7,7 @@ const HomeForm = () => {
   return (
     <div>
       <h2>게시판</h2>
-      {loginUser && (
+      {loginUser !== null && (
         <ButtonBox>
           <button>글쓰기</button>
         </ButtonBox>

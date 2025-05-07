@@ -7,7 +7,10 @@ const useUserStore = create((set) => ({
     const user = saved ? JSON.parse(saved) : null;
     set({ loginUser: user });
   },
-  logout: () => set({ loginUser: null }),
+  logout: () => {
+    localStorage.removeItem('loginUser');
+    set({ loginUser: null });
+  },
 }));
 
 export default useUserStore;

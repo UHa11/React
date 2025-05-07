@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
+import useUserStore from '../store/useUserStore';
 
 const schema = yup.object().shape({
   id: yup.string().required('아이디를 입력하세요'),
@@ -12,7 +13,14 @@ const schema = yup.object().shape({
 });
 
 const LoginForm = () => {
+  const loginUser = useUserStore((state) => state.loginUser);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loginUser) {
+      navigate('/', { replace: true }); // 로그인되어 있으면 메인으로 보내기
+    }
+  }, []);
 
   const {
     register,
@@ -35,12 +43,12 @@ const LoginForm = () => {
     const users = res.data;
 
     const foundUser = users.find((user) => user.id === data.id);
-    if (foundUser.pwd === data.pwd) {
+    if (foundUser && foundUser.pwd === data.pwd) {
       const user = { id: foundUser.id, pwd: foundUser.pwd };
       localStorage.setItem('loginUser', JSON.stringify(user));
-      navigate(`/`);
+      window.location.href = '/';
     } else {
-      setError('id', {
+      setError('pwd', {
         type: 'manual',
         message: '아이디 또는 비번이 잘못되었습니다.',
       });
